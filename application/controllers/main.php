@@ -28,6 +28,12 @@ public function addTrainerDistance(){
   echo json_encode(array("distance"=>$distance));
 }
 
+public function addTrainerAbout(){
+	$about = $this->input->post();
+	$this->Info->addTrainerAbout($about);
+  echo json_encode(array("about"=>$about));
+}
+
 
 public function addTrainerGoal(){
 	$goal_id = $this->input->post();
