@@ -22,6 +22,12 @@ class Main extends CI_Controller {
 		//	redirect('/');
 	}
 
+public function addTrainerDistance(){
+	$distance = $this->input->post();
+	$this->Info->addTrainerDistance($distance);
+  echo json_encode(array("distance"=>$distance));
+}
+
 
 public function addTrainerGoal(){
 	$goal_id = $this->input->post();

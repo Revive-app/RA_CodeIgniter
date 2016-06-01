@@ -73,6 +73,12 @@ public function addTrainerInterest($interest){
 
 }
 
+public function addTrainerDistance($distance){
+	$query = "INSERT INTO reviveapp.Trainer_location (distance, trainer_id, trainer_address) VALUES (?,?,?)";
+	$value = $distance;
+ $this->db->query($query, $value);
+}
+
 }
 
 //end of Information model
