@@ -74,7 +74,7 @@ public function addTrainerInterest($interest){
 }
 
 public function addTrainerDistance($distance){
-	$query = "INSERT INTO reviveapp.Trainer_location (distance, trainer_id, trainer_address, primaryTrainingAddress,secondaryTrainingAddress ) VALUES (?,?,?,?,?)";
+	$query = "INSERT INTO reviveapp.Trainer_location (distance, trainer_id, trainer_address, primaryTrainingAddress, secodaryTrainigAddress) VALUES (?,?,?,?,?)";
 	$value = $distance;
  $this->db->query($query, $value);
 }
