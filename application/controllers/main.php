@@ -4,16 +4,7 @@ class Main extends CI_Controller {
 
 	public function __construct()
 	{
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1034';
-		$config['max_width'] = '1024';
-		$config['max_height'] = '768';
 
-		$this->load->library('upload', $config);
-
-		// Alternately you can set preferences by calling the initialize function. Useful if you auto-load the class:
-		$this->upload->initialize($config);
 		parent::__construct();
 		$this->load->model("Info");	}
 
@@ -45,6 +36,16 @@ public function addTrainerAbout(){
 }
 
 public function addTrainerImage(){
+	$config['upload_path'] = './uploads/';
+	$config['allowed_types'] = 'gif|jpg|png';
+	$config['max_size']	= '1034';
+	$config['max_width'] = '1024';
+	$config['max_height'] = '768';
+
+	$this->load->library('upload', $config);
+
+	// Alternately you can set preferences by calling the initialize function. Useful if you auto-load the class:
+	$this->upload->initialize($config);
 	//$image = $this->input->post();
 	$trainerId = $this->input->post("trainerId");
 	$target_dir = 'assets/images';
