@@ -34,6 +34,10 @@ public function addTrainerAbout(){
   echo json_encode(array("about"=>$about));
 }
 
+public function addTrainerImage(){
+	$image = $this->input->post();
+}
+
 
 public function addTrainerGoal(){
 	$goal_id = $this->input->post();
