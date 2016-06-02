@@ -37,27 +37,41 @@ public function addTrainerAbout(){
 public function addTrainerImage(){
 	//$image = $this->input->post();
 	$trainerId = $_POST["trainerId"];
-	$target_dir = 'assets/images/';
-	$target_file = $target_dir . basename($_FILES['file']['name']);
+	$target_dir = 'assets/images';
+	$target_file = $target_dir . "/" . basename($_FILES["file"]["name"]);
 	if(!file_exists($target_dir)){
-		mkdir($target_dir, 0777, true);
-	}
-​
-	if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir)) {
-	  echo json_encode([
-		"Message" => "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.",
-		"Status" => "OK",
-		"trainerId" => $_REQUEST["trainerId"]
-		]);
+			mkdir($target_dir, 0777, true);
+		}
 
-	} else {
-		echo json_encode([
-		"Message" => "Sorry, there was an error uploading your file.",
-		"Status" => "Error",
-		"trainerId" => $_REQUEST["trainerId"]
-		]);
+	if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file))
+{
+echo json_encode([
+"Message" => "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.",
+"Status" => "OK",
+"trainerId" => $_REQUEST["trainerId"]
+]);
 
-	}
+} else {
+
+echo json_encode([
+"Message" => "Sorry, there was an error uploading your file.",
+"Status" => "Error",
+"trainerId" => $_REQUEST["trainerId"]
+]);
+
+}
+	//$target_file = $target_dir . basename($_FILES['file']['name']);
+// 	if(!file_exists($target_dir)){
+// 		mkdir($target_dir, 0777, true);
+// 	}
+// ​
+// move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
+// 		// var_dump($_FILES);
+// 		// var_dump($_POST);
+// 		if (isset($_SESSION) && isset($_SESSION['itemPicture'])) {
+// 			$_SESSION['itemPicture'] = '.'.$target_file;
+// 		}
+
 }
 
 
