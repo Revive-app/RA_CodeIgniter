@@ -80,7 +80,7 @@ public function addTrainerDistance($distance){
 }
 
 public function addTrainerAbout($about){
-	$query = "INSERT INTO reviveapp.trainers (gender, aboutme) VALUES (?,?) WHERE trainer_id = ?";
+	$query = "UPDATE reviveapp.trainers SET gender = ? , aboutme = ? WHERE trainer_id=?";
 	$value = $about;
  $this->db->query($query, $value);
 }
