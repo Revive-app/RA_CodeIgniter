@@ -36,23 +36,20 @@ public function addTrainerAbout(){
 }
 
 public function addTrainerImage(){
-	$config['upload_path'] = './uploads/';
-	$config['allowed_types'] = 'gif|jpg|png';
-	$config['max_size']	= '1034';
-	$config['max_width'] = '1024';
-	$config['max_height'] = '768';
-
-	$this->load->library('upload', $config);
-
-	// Alternately you can set preferences by calling the initialize function. Useful if you auto-load the class:
-	$this->upload->initialize($config);
+	// $config['upload_path'] = './uploads/';
+	// $config['allowed_types'] = 'gif|jpg|png';
+	// $config['max_size']	= '1034';
+	// $config['max_width'] = '1024';
+	// $config['max_height'] = '768';
+	//
+	// $this->load->library('upload', $config);
+	//
+	// // Alternately you can set preferences by calling the initialize function. Useful if you auto-load the class:
+	// $this->upload->initialize($config);
 	//$image = $this->input->post();
 	$trainerId = $this->input->post("trainerId");
 	$target_dir = 'assets/images';
-	if(!file_exists($target_dir))
-{
-mkdir($target_dir, 0777, true);
-}
+
 	$target_file = $target_dir . "/" . basename($_FILES["file"]["name"]);
 
 
