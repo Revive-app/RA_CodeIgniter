@@ -50,14 +50,14 @@ public function addTrainerImage(){
 	$trainerId = $this->input->post("trainerId");
 	$target_dir = 'assets/images';
 
-	$target_file = $target_dir . "/" . basename($_FILES["file"]["name"]);
+	$target_file = $target_dir . "/" . basename($_FILES["pic"]["name"]);
 
 
 
-	if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file))
+	if (move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file))
 {
 echo json_encode([
-"Message" => "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.",
+"Message" => "The file ". basename( $_FILES["pic"]["name"]). " has been uploaded.",
 "Status" => "OK",
 "trainerId" => $trainerId
 ]);
@@ -71,17 +71,6 @@ echo json_encode([
 ]);
 
 }
-	//$target_file = $target_dir . basename($_FILES['file']['name']);
-// 	if(!file_exists($target_dir)){
-// 		mkdir($target_dir, 0777, true);
-// 	}
-// ​
-// move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
-// 		// var_dump($_FILES);
-// 		// var_dump($_POST);
-// 		if (isset($_SESSION) && isset($_SESSION['itemPicture'])) {
-// 			$_SESSION['itemPicture'] = '.'.$target_file;
-// 		}
 
 }
 
