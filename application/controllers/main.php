@@ -36,19 +36,16 @@ public function addTrainerAbout(){
 
 public function addTrainerImage(){
 	//$image = $this->input->post();
-	$trainerId = $_POST["trainerId"];
+	$trainerId = $this->input->post("trainerId");
 	$target_dir = 'assets/images';
 	$target_file = $target_dir . "/" . basename($_FILES["file"]["name"]);
-	if(!file_exists($target_dir)){
-			mkdir($target_dir, 0777, true);
-		}
 
 	if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file))
 {
 echo json_encode([
 "Message" => "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.",
 "Status" => "OK",
-"trainerId" => $_REQUEST["trainerId"]
+"trainerId" => $trainerId
 ]);
 
 } else {
@@ -56,7 +53,7 @@ echo json_encode([
 echo json_encode([
 "Message" => "Sorry, there was an error uploading your file.",
 "Status" => "Error",
-"trainerId" => $_REQUEST["trainerId"]
+"trainerId" => $trainerId
 ]);
 
 }
