@@ -48,29 +48,19 @@ public function addTrainerImage(){
 	// $this->upload->initialize($config);
 	//$image = $this->input->post();
 	$trainerId = $this->input->post("trainerId");
-	$target_dir = 'assets/images';
+	
+		$uploaddir = 'assets/images';
+		// PS: custom filed name : pic
+		$uploadfile = $uploaddir . basename($_FILES['pic']['name']);
 
-	$target_file = $target_dir . "/" . basename($_FILES["pic"]["name"]);
+		if (move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile)) {
+		   $array = array ("code" => "1", "message" => "successfully");
+		} else {
+		   $array = array ("code" => "0", "message" => "Possible file upload attack!".$_FILES['pic']['name']);
+		}
 
+		echo json_encode ( $array );
 
-
-	if (move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file))
-{
-echo json_encode([
-"Message" => "The file ". basename( $_FILES["pic"]["name"]). " has been uploaded.",
-"Status" => "OK",
-"trainerId" => $trainerId
-]);
-
-} else {
-
-echo json_encode([
-"Message" => "Sorry, there was an error uploading your file.",
-"Status" => "Error",
-"trainerId" => $trainerId
-]);
-
-}
 
 }
 
