@@ -48,8 +48,8 @@ public function addTrainerImage(){
 	// $this->upload->initialize($config);
 	//$image = $this->input->post();
 	$trainerId = $this->input->post("trainerId");
-	
-		$uploaddir = 'assets/images';
+
+		$uploaddir = 'assets/images/';
 		// PS: custom filed name : pic
 		$uploadfile = $uploaddir . basename($_FILES['pic']['name']);
 
